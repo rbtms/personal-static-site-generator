@@ -1,4 +1,4 @@
-# Site Generator
+# Personal Static Site Generator
 
 A static site generator. I use this for my personal website on [https://rbtms.github.io](https://rbtms.github.io).
 
