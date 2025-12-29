@@ -1,0 +1,43 @@
+[
+    {
+        "name"  : "Termice",
+        "desc"  : "Terminal application with an ineteractable TUI to listen to net radio.",
+        "imgurl": "assets/project_img/termice.png",
+        "repo"  : "https://github.com/rbtms/termice"
+    }, {
+        "name"  : "tripperjs",
+        "desc"  : "Implementation of the 2ch tripcode algorithm through 3DES on Javascript.",
+        "imgurl": "assets/project_img/tripperjs.png",
+        "repo"  : "https://github.com/rbtms/tripperjs"
+    }, {
+        "name"  : "dekku",
+        "desc"  : "Simple React JLPT flipcards with examples from jisho.org.",
+        "imgurl": "assets/project_img/dekku.png",
+        "repo" : "https://github.com/rbtms/dekku"
+    }, {
+        "name"  : "Pastebin Codemirror Editor",
+        "desc"  : "Codemirror edifor for Pastebin with syntax highlight and night mode",
+        "imgurl": "assets/project_img/pastebin_codemirror_editor.png",
+        "repo"  : "https://github.com/rbtms/Pastebin-CodeMonkey-Editor"
+    }, {
+        "name"  : "Webtorrent TUI",
+        "desc"  : "Simple TUI for the webtorrent terminal client.",
+        "imgurl": "assets/project_img/webtorrent_tui.gif",
+        "repo"  : "https://github.com/rbtms/webtorrent_tui"
+    }, {
+        "name"  : "Remote backup utility",
+        "desc"  : "Small and simple backup utility that supports local and remote storage providers.",
+        "imgurl": "assets/project_img/backup.png",
+        "repo"  : "https://github.com/rbtms/backup_tool"
+    }, {
+        "name"  : "CHIP8 Emulator",
+        "desc"  : "Small interpreter and emulator for CHIP8.",
+        "videourl": "assets/project_vid/chip8_emulator.mp4",
+        "repo"  : "https://github.com/rbtms/CHIP8-emulator"
+    }, {
+        "name"  : "Gameboy Emulator",
+        "desc"  : "Small, cycle-accurate gameboy emulator written in Rust.",
+        "videourl": "assets/project_vid/gb_emulator.mp4",
+        "repo"  : "https://github.com/rbtms/Gameboy-Emulator"
+    }
+]

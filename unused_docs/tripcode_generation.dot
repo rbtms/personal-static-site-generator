@@ -1,0 +1,57 @@
+digraph TripcodeGeneration {
+    rankdir=TB;
+    fontsize=12;
+
+    node [shape=box, style="rounded,filled", fillcolor="#f9f9f9", fontname="Helvetica"];
+    edge [fontname="Helvetica"];
+
+    /* Input */
+    Password [label="User Password\n(Arbitrary Length)"];
+
+    /* Key preparation */
+    Truncate [label="Input Truncation\n• Take first 8 bytes\n• Ignore remaining bytes"];
+
+    /* Salt generation cluster */
+    subgraph cluster_salt {
+        label="Salt Generation (2 bytes)";
+        style="rounded,dashed";
+        color="#bbbbbb";
+
+        SaltAppend [label="Phase 1:\nAppend \"H.\" to password"];
+        SaltSelect [label="Phase 2:\nSelect 2 characters\nstarting at index 1\n(substr(1, 2))"];
+        SaltMap [label="Phase 3:\n• Non-ASCII → '.'\n• Character Mapping\n :;<=>?@[\\]^_` → ABCDEFabcdefg"];
+        SaltOut [label="Final Salt\n(2 ASCII chars)", fillcolor="#eef7ff"];
+    }
+
+    /* DES crypt */
+    subgraph cluster_des {
+        label="DES-based crypt(3)";
+        style="rounded,dashed";
+        color="#bbbbbb";
+
+        DESSetup [label="DES Key Setup\n• 8 bytes → 56-bit key\n with parity bits discarded"];
+        DESIter [label="DES Encryption\n• 25 iterations\n• Salt perturbs E-table"];
+        DESOut [label="DES Output\n(64-bit block)", fillcolor="#eef7ff"];
+    }
+
+    /* Formatting */
+    Encode [label="Tripcode Encoding\n• Take first 10 bytes\n• Custom charset:\n  a–z A–Z 0–9 . /"];
+    Tripcode [label="Final Tripcode\n#XXXXXXXXXX", fillcolor="#e6ffe6"];
+
+    /* Flow */
+    Password -> Truncate;
+
+    Password -> SaltAppend;
+    SaltAppend -> SaltSelect;
+    SaltSelect -> SaltMap;
+    SaltMap -> SaltOut;
+
+    Truncate -> DESSetup;
+    SaltOut -> DESIter;
+    DESSetup -> DESIter;
+    DESIter -> DESOut;
+
+    DESOut -> Encode;
+    Encode -> Tripcode;
+}
+
